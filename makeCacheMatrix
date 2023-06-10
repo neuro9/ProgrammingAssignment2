@@ -1,0 +1,32 @@
+# Function to create a special matrix object that can cache its inverse
+makeCacheMatrix <- function(x) {
+  # Initialize the inverse matrix as NULL
+  inv <- NULL
+  
+  # Setter function to set the matrix
+  setMatrix <- function(newValue) {
+    x <<- newValue  # Use <<- to assign in the parent environment
+    inv <<- NULL    # Reset the cached inverse when the matrix is updated
+  }
+  
+  # Getter function to retrieve the matrix
+  getMatrix <- function() {
+    x
+  }
+  
+  # Setter function to set the inverse of the matrix
+  setInverse <- function(inverse) {
+    inv <<- inverse  # Use <<- to assign in the parent environment
+  }
+  
+  # Getter function to retrieve the inverse of the matrix
+  getInverse <- function() {
+    inv
+  }
+  
+  # Return a list of functions
+  list(setMatrix = setMatrix,
+       getMatrix = getMatrix,
+       setInverse = setInverse,
+       getInverse = getInverse)
+}
