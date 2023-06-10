@@ -1,0 +1,17 @@
+# Function to compute and cache the inverse of the matrix
+cacheSolve <- function(cacheMat) {
+  # Check if the inverse is already computed and cached
+  if (!is.null(cacheMat$inverse)) {
+    message("Retrieving cached inverse...")
+    return(cacheMat$inverse)
+  }
+  
+  # Compute the inverse of the matrix
+  inverse <- solve(cacheMat$getMatrix())
+  
+  # Cache the inverse in the special matrix object
+  cacheMat$inverse <- inverse
+  
+  # Return the inverse
+  inverse
+}
